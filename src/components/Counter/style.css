@@ -1,0 +1,30 @@
+.counter {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    gap: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.counter .decrement,
+.counter .increment {
+    height: 50px;
+    width: 50px;
+    font-size: 32px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #fff;
+}
+
+.counter .decrement {
+    height: 50px;
+    width: 50px;
+    font-size: 32px;
+    background-color: green;
+}
+
+.counter .increment {
+    background-color: red;
+}
