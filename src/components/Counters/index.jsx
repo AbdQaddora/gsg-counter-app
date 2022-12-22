@@ -74,9 +74,7 @@ class Counters extends Component {
                     decrement={() => { this.onDecrement(counter.id, counter.changeBy || 1) }}
                 />)}
 
-                <hr />
                 <Total total={this.state.total} />
-                <hr />
                 <AddNewCounter addNewCounter={this.addNewCounter} />
             </div>
         );
