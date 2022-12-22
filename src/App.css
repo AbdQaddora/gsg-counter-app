@@ -1,12 +1,27 @@
-.App{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
   background-color: #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 50px;
 }
 
-.total{
+.counters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.total {
   text-align: center;
   font-weight: 800;
   font-size: 24px;

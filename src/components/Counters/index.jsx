@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddNewCounter from '../AddNewCounter';
 import Counter from '../Counter';
 import Total from '../Total';
 
@@ -9,8 +10,21 @@ class Counters extends Component {
             { id: 2, count: 0, changeBy: 2 },
             { id: 3, count: 0, changeBy: 5 },
             { id: 4, count: 0 },
-        ]
+        ],
+        total: 0
     }
+
+    componentDidUpdate() {
+        const newTotal = this.state.counters.reduce((prev, current) => prev + current.count, 0);
+
+        if (newTotal !== this.state.total) {
+            this.setState(prev => ({
+                ...prev,
+                total: newTotal
+            }))
+        }
+    }
+
 
     onIncrement = (id, changeBy) => {
         this.setState(prev => {
@@ -41,9 +55,18 @@ class Counters extends Component {
         })
     }
 
+    addNewCounter = (changeBy) => {
+        this.setState(prev => ({
+            counters: [...prev.counters, {
+                id: prev.counters.length + 1,
+                count: 0,
+                changeBy: changeBy
+            }]
+        }))
+    }
     render() {
         return (
-            <div>
+            <div className='counters'>
                 {this.state.counters.map(counter => <Counter
                     key={counter.id}
                     counter={counter.count}
@@ -52,7 +75,9 @@ class Counters extends Component {
                 />)}
 
                 <hr />
-                <Total total={this.state.counters.reduce((prev, current) => prev + current.count, 0)} />
+                <Total total={this.state.total} />
+                <hr />
+                <AddNewCounter addNewCounter={this.addNewCounter} />
             </div>
         );
     }
